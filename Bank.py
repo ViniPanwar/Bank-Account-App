@@ -184,7 +184,7 @@ def listAccount():
 # End Function listAccount()
 
 def accountHistory():
-    if(os.path.isfile("transactionInfo.tsv")):
+    if(os.path.isfile(trn_filename)):
         while True:
             try:
                 accId = int(input ("\nEnter Account Id: "))
@@ -194,7 +194,7 @@ def accountHistory():
         finalBalance = 0
         firstName = ""
         lastName = ""
-        fields = ['Account_ID','First_Name', 'Last_Name', 'Balance']
+        fields = ['Account_ID','First_Name', 'Last_Name','Transaction', 'Balance']
         df = pd.read_csv(trn_filename, usecols=fields)
         accounts=[]
         accounts = df['Account_ID'].tolist()
@@ -237,6 +237,7 @@ def accountHistory():
             print("\n Account does not Exist.")
     else:
         print("File does not exist.")
+    main()
 # End Function accountHistory()
 
 filename = "bankAccountInfo.csv"
